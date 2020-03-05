@@ -46,6 +46,9 @@ flush privileges;
 sudo mv path/to/cloned/repo /var/www/html/cloned_repo
 ```
 - Create a virtual host in `/etc/apache2/sites-avaiblable/`
+```sh 
+sudo nano /etc/apache2/sites-avaiblable/my_virtual_host.conf
+```
 - Copy this inside and adapt with your settings : 
 ```sh
 <VirtualHost *:80> # Virtualhost écoutant sur le port 80
