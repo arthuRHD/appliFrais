@@ -41,4 +41,32 @@ flush privileges;
 - Drag the cloned repository in the `htdocs`
 - Go to `http://localhost/appliFrais/`
 ### Apache for deployement
-- Move the cloned repository 
+- Move the cloned repository into `/var/www/html/` 
+```sh 
+sudo mv path/to/cloned/repo /var/www/html/cloned_repo
+```
+- Create a virtual host in `/etc/apache2/sites-avaiblable/`
+- Copy this inside and adapt with your settings : 
+```sh
+<VirtualHost *:80> # Virtualhost écoutant sur le port 80
+        ServerName dev.example.fr # Nom du serveur auquel le vhost doit répondre
+        ServerAlias dev.example.fr # Eventuel alias supplémentaire
+        ServerAdmin webmaster@example.fr # Mail du webmaster 
+        ErrorLog /var/log/apache2/dev.example.fr-error_log # Délocaliser pour ce vhost les logs d'erreur
+        TransferLog /var/log/apache2/dev.example.fr-access_log # Délocaliser pour ce vhost les logs d'accès
+        DocumentRoot "/var/www/localhost/htdocs/dev/" # Racine des fichiers du site
+        <Directory "/var/www/localhost/htdocs/dev/"> # Définition des droits d'un répertoire
+                Options Indexes FollowSymLinks # Options choisies
+                AllowOverride All # Permet d'utiliser le htaccess dans un site
+                Require all granted # On autorise tout le monde
+        </Directory> # Fin de la définition des droits
+</VirtualHost> # Fin de la définition du vhost
+```
+- Activate the site 
+```sh 
+sudo a2ensite my_virtual_host.conf
+```
+- Reload apache2 
+```sh 
+sudo systemctl reload apache2
+```
