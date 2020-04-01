@@ -50,7 +50,8 @@ sudo mv path/to/cloned/repo /var/www/html/cloned_repo
 sudo nano /etc/apache2/sites-avaiblable/my_virtual_host.conf
 ```
 - Copy this inside and adapt with your settings : 
-```sh
+
+```conf
 <VirtualHost *:80> # Virtualhost écoutant sur le port 80
         ServerName dev.example.fr # Nom du serveur auquel le vhost doit répondre
         ServerAlias dev.example.fr # Eventuel alias supplémentaire
@@ -65,6 +66,7 @@ sudo nano /etc/apache2/sites-avaiblable/my_virtual_host.conf
         </Directory> # Fin de la définition des droits
 </VirtualHost> # Fin de la définition du vhost
 ```
+
 - Activate the site 
 ```sh 
 sudo a2ensite my_virtual_host.conf
