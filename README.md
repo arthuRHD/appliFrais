@@ -1,4 +1,7 @@
 # appliFrais
+
+![SQL CI](https://github.com/arthuRHD/appliFrais/workflows/SQL%20CI/badge.svg) ![PHP CI](https://github.com/arthuRHD/appliFrais/workflows/PHP%20CI/badge.svg)
+
 #### Made in MVC
 > A php web application managing professionnal expenses of GSB employees. <br>
 > It communicates with a MySQL database which is storing expenses as well as users. <br>
