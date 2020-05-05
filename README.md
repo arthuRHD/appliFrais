@@ -21,6 +21,7 @@
 - Is allowed to validate or deny expenses sheets
 - Is allowed to lock an expenses sheet
 
+## [Demo](http://applifrais.richardinfo.fr/)
 
 ## Install & Config
 - Clone the repository :
