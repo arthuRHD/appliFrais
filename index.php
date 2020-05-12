@@ -6,7 +6,7 @@ include("views/base/v_entete.php") ;
 session_start();
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = estConnecte();
-if(!isset($_REQUEST['uc']) || !$estConnecte){
+if(!isset($_GET['uc']) || !$estConnecte){
 	$_REQUEST['uc'] = 'connexion';
 }	
 $uc = $_REQUEST['uc'];
@@ -22,4 +22,4 @@ switch($uc){
 	case 'modif':
 		include("controllers/comptable/c_modif.php");break;
 }
-include("views/base/v_pied.php") ;
+include("./views/base/v_pied.php") ;

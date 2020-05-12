@@ -16,10 +16,10 @@
  */
 
 class PdoGsb{   		
-		private static $serveur='mysql:host=localhost';
-      	private static $bdd='dbname=bdgsb';   		
-      	private static $user='root' ;    		
-      	private static $mdp='' ;	
+		private static $serveur='mysql:host=mysql-arthurrhd.alwaysdata.net';
+      	private static $bdd='dbname=arthurrhd_bdgsb';   		
+      	private static $user='arthurrhd' ;    		
+      	private static $mdp='arthur36263626' ;	
 		private static $monPdo;
 		private static $monPdoGsb=null;
 /**
@@ -295,8 +295,8 @@ class PdoGsb{
  * @return un tableau avec des champs de jointure entre une fiche de frais et la ligne d'état 
 */	
 	public function getLesInfosFicheFrais($idVisiteur,$mois){
-		$req = "select ficheFrais.idEtat as idEtat, ficheFrais.dateModif as dateModif, ficheFrais.nbJustificatifs as nbJustificatifs, 
-			ficheFrais.montantValide as montantValide, etat.libelle as libEtat from  fichefrais inner join Etat on ficheFrais.idEtat = Etat.id 
+		$req = "select fichefrais.idEtat as idEtat, fichefrais.dateModif as dateModif, fichefrais.nbJustificatifs as nbJustificatifs, 
+			fichefrais.montantValide as montantValide, etat.libelle as libEtat from  fichefrais inner join etat on fichefrais.idEtat = etat.id 
 			where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		$res = PdoGsb::$monPdo->query($req);
 		$laLigne = $res->fetch();
@@ -311,7 +311,7 @@ class PdoGsb{
  */
  
 	public function majEtatFicheFrais($idVisiteur,$mois,$etat){
-		$req = "update ficheFrais set idEtat = '$etat', dateModif = now() 
+		$req = "update fichefrais set idEtat = '$etat', dateModif = now() 
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
